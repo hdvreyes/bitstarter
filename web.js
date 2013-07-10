@@ -2,14 +2,10 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
-<<<<<<< HEAD
-app.readFileSync('index.html', 'utf8');
-
-=======
 app.get('/', function(request, response) {
 
-		var page = fs.readFileSync('index.html', 'utf8');
-	  	response.send(page);
+	var page = fs.readFileSync('index.html', 'utf8');
+ 	response.send(page);
 
 });
 
@@ -26,7 +22,6 @@ app.get('/', function(request, response) {
 // 	  throw e;
 // 	}  
 // }
->>>>>>> 857a1e05799a269d9c4fa2e9eb8fd3ffc5cbfcea
 
 
 var port = process.env.PORT || 5000;
