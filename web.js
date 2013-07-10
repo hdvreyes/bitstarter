@@ -5,7 +5,12 @@ var app = express.createServer(express.logger());
 app.get('/', function(request, response) {
 
 	var page = fs.readFileSync('index.html', 'utf8');
- 	response.send(page);
+
+	buf = new Buffer(256);
+	len = buf.write(page, 0);
+        var display = buf.toString('utf8', 0, len);
+
+ 	response.send(display);
 
 });
 
