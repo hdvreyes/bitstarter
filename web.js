@@ -6,7 +6,7 @@ app.get('/', function(request, response) {
 
 	var page = fs.readFileSync('index.html', 'utf8');
 
-	buf = new Buffer(256);
+	buf = new Buffer(page.length);
 	len = buf.write(page,0);
         //var display = buf.toString('utf8',0,len);
 
