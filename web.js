@@ -8,9 +8,9 @@ app.get('/', function(request, response) {
 
 	buf = new Buffer(page.length);
 	len = buf.write(page,0);
-        //var display = buf.toString('utf8',0,len);
+        display = buf.toString('utf8',0,len);
 
- 	response.send(buf.toString('utf8', 0, len));
+ 	response.send(display);
 
 });
 
