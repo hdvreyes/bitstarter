@@ -1,1 +1,17 @@
-["h1", ".navigation", ".test"]
+["h1", 
+".navigation", 
+".test this is to check for false",
+".logo",
+".blank",
+".about",
+".heading",
+".subheading",
+".pitch",
+".video",
+".thermometer",
+".order",
+".social",
+".section1",
+".section2",
+".faq",
+".footer"]
