@@ -26,7 +26,7 @@ var program             = require('commander');
 var cheerio             = require('cheerio');
 var HTMLFILE_DEFAULT    = "index.html";
 var CHECKSFILE_DEFAULT  = "checks.json";
-var HTMLURL_DEFAULT    = "http://serene-shore-5970.herokuapp.com/";
+var HTMLURL_DEFAULT    = "http://yahoo.com";
 var assertFileExists = function(infile) {
     var instr = infile.toString();
     if(!fs.existsSync(instr)) {
