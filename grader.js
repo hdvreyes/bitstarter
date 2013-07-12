@@ -95,9 +95,9 @@ var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
                 var present = $(checks[ii]).length > 0;
                 out[checks[ii]] = present;
             }
-            var outJson = JSON.stringify(out, null, 4);
-            console.log(outJson);
-            
+            // var outJson = JSON.stringify(out, null, 4);
+            // console.log(outJson);
+             return out;
         }); 
     }else
     {
