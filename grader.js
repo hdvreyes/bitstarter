@@ -59,7 +59,7 @@ var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
     $ = cheerioHtmlFile(htmlfile);
     //var checks = loadChecks(checksfile).sort();
     //rest.get(apiurl).on('complete', response2console);
-    var checks = loadHtml(urlpath).sort();
+    var checks = loadHtml(urlpath);
 
 
     var out = {};
