@@ -91,20 +91,35 @@ var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
         restler.get(urlpath).on('complete', function(data, response) {
             $ = cheerioHtmlFile(data);
             var checks = loadChecks(checksfile).sort();
+            var out = {};
+            for(var ii in checks) {
+                var present = $(checks[ii]).length > 0;
+                out[checks[ii]] = present;
+            }
+            var outJson = JSON.stringify(out, null, 4);
+            console.log(outJson);
+            
         }); 
     }else
     {
         // console.log('here2');
         $ = cheerioHtmlFile(htmlfile);
         var checks = loadChecks(checksfile).sort();
+        var out = {};
+        for(var ii in checks) {
+            var present = $(checks[ii]).length > 0;
+            out[checks[ii]] = present;
+        }
+        var outJson = JSON.stringify(checkJson, null, 4);
+        console.log(outJson);
+
     }
     
-    var out = {};
-    for(var ii in checks) {
-        var present = $(checks[ii]).length > 0;
-        out[checks[ii]] = present;
-    }
-    return out;
+    // return out;
+
+
+
+
     // var outJson = JSON.stringify(out, null, 4);
     // console.log(outJson);
 };
@@ -122,8 +137,11 @@ if(require.main == module) {
         .option('-u, --url <html_url>', 'Path to url', clone(chkPath), HTMLURL_DEFAULT)
         .parse(process.argv);
     var checkJson = checkHtmlFile(program.file, program.checks, program.url);
-    var outJson = JSON.stringify(checkJson, null, 4);
-    console.log(outJson);
+    // var outJson = JSON.stringify(checkJson, null, 4);
+    // console.log(outJson);
+
+
+
 } else {
     exports.checkHtmlFile = checkHtmlFile;
 }
