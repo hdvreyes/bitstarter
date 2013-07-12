@@ -48,7 +48,7 @@ var loadChecks = function(checksfile) {
 // post JSON
 var loadHtml = function(htmlUrl){
   var jsonData = { id: 334 };
-    restler.postJson('http://example.com/action', jsonData).on('complete', function(data, response) {
+    restler.get('http://example.com/action', jsonData).on('complete', function(data, response) {
     // handle response
     return JSON.parse(fs.readFileSync(response));
   });  
