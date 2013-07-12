@@ -62,26 +62,6 @@ var loadHtml = function(htmlUrl){
   }); 
 }
 
-// var checkURL = function(url, checksfile) {
-
-//   restler.get(url).on('complete', function(data, response) {
-
-//     $ = cheerio.load(data);
-
-//     var checks = loadChecks(checksfile).sort();
-//     var out = {};
-//     for(var ii in checks) {
-//       var present = $(checks[ii]).length > 0;
-//       out[checks[ii]] = present;
-//     }
-
-//     var outJson = JSON.stringify(out, null, 4);
-//     console.log(outJson);
-
-//   }); 
-// };
-
-
 var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
     // console.log(htmlfile + '-file:' + checksfile + '-url:' + urlpath);
     
@@ -89,7 +69,8 @@ var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
     {
         // console.log('here');
         restler.get(urlpath).on('complete', function(data, response) {
-            $ = cheerioHtmlFile(data);
+            //$ = cheerioHtmlFile(data);
+            $ = cheerio.load(data);
             var checks = loadChecks(checksfile).sort();
             var out = {};
             for(var ii in checks) {
@@ -115,10 +96,6 @@ var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
         //return out;
 
     }
-    
-
-
-
 
     // var outJson = JSON.stringify(out, null, 4);
     // console.log(outJson);
@@ -139,8 +116,6 @@ if(require.main == module) {
     var checkJson = checkHtmlFile(program.file, program.checks, program.url);
     // var outJson = JSON.stringify(checkJson, null, 4);
     // console.log(outJson);
-
-
 
 } else {
     exports.checkHtmlFile = checkHtmlFile;
