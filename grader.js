@@ -50,7 +50,7 @@ var loadHtml = function(htmlUrl){
   var jsonData = { id: 334 };
     restler.get('http://example.com/action', jsonData).on('complete', function(data, response) {
     // handle response
-    return JSON.parse(fs.readFileSync(data));
+    return JSON.parse(data);
   });  
 }
 
