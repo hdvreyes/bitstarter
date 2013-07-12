@@ -24,9 +24,10 @@ References:
 var fs                  = require('fs');
 var program             = require('commander');
 var cheerio             = require('cheerio');
+var restler             = require('restler');
 var HTMLFILE_DEFAULT    = "index.html";
 var CHECKSFILE_DEFAULT  = "checks.json";
-var HTMLURL_DEFAULT    = "http://yahoo.com";
+var HTMLURL_DEFAULT     = "http://www.google.com";
 var assertFileExists = function(infile) {
     var instr = infile.toString();
     if(!fs.existsSync(instr)) {
@@ -44,9 +45,23 @@ var loadChecks = function(checksfile) {
     return JSON.parse(fs.readFileSync(checksfile));
 };
 
-var checkHtmlFile = function(htmlfile, checksfile) {
+// post JSON
+var loadHtml = function(htmlUrl){
+  var jsonData = { id: 334 };
+    rest.postJson('http://example.com/action', jsonData).on('complete', function(data, response) {
+    // handle response
+    return JSON.parse(fs.readFileSync(response));
+  });  
+}
+
+
+var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
     $ = cheerioHtmlFile(htmlfile);
-    var checks = loadChecks(checksfile).sort();
+    //var checks = loadChecks(checksfile).sort();
+    //rest.get(apiurl).on('complete', response2console);
+    var checks = loadHtml(urlpath).sort();
+
+
     var out = {};
     for(var ii in checks) {
         var present = $(checks[ii]).length > 0;
