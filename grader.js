@@ -55,7 +55,7 @@ var loadChecks = function(checksfile) {
 
 // post JSON
 var loadHtml = function(htmlUrl){
-  var jsonData = { id: 334 };
+  //var jsonData = { id: 334 };
   restler.get(htmlUrl).on('complete', function(data, response) {
     return JSON.parse(data);
   }); 
@@ -86,13 +86,17 @@ var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
     
     if(htmlfile == false)
     {
-      d = loadHtml(urlpath);
-      $ = cheerioHtmlFile(d);
-      var checks = loadHtml(urlpath);
+        console.log('here');
+        restler.get(urlpath).on('complete', function(data, response) {
+            $ = cheerioHtmlFile(data);
+            var checks = loadChecks(checksfile).sort();
+        }); 
     }else
     {
-      $ = cheerioHtmlFile(htmlfile);
-      var checks = loadChecks(checksfile).sort();
+        console.log('here2');
+
+        $ = cheerioHtmlFile(htmlfile);
+        var checks = loadChecks(checksfile).sort();
     }
     
     var out = {};
@@ -100,7 +104,10 @@ var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
         var present = $(checks[ii]).length > 0;
         out[checks[ii]] = present;
     }
-    return out;
+    //return out;
+    var outJson = JSON.stringify(out, null, 4);
+    console.log(outJson);
+
 };
 
 var clone = function(fn) {
