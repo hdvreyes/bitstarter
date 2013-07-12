@@ -88,8 +88,10 @@ var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
     // {
         console.log('here');
         restler.get(urlpath).on('complete', function(data, response) {
-            $ = cheerio.load(data);
+            //$ = cheerio.load(data);
+            var hey = data;
         }); 
+        $ = cheerioHtmlFile(hey);
         var checks = loadChecks(checksfile).sort();
 
     // }else
