@@ -110,12 +110,12 @@ var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
             var present = $(checks[ii]).length > 0;
             out[checks[ii]] = present;
         }
-        var outJson = JSON.stringify(checkJson, null, 4);
-        console.log(outJson);
+        // var outJson = JSON.stringify(checkJson, null, 4);
+        // console.log(outJson);
+        return out;
 
     }
     
-    // return out;
 
 
 
@@ -137,8 +137,8 @@ if(require.main == module) {
         .option('-u, --url <html_url>', 'Path to url', clone(chkPath), HTMLURL_DEFAULT)
         .parse(process.argv);
     var checkJson = checkHtmlFile(program.file, program.checks, program.url);
-    // var outJson = JSON.stringify(checkJson, null, 4);
-    // console.log(outJson);
+    var outJson = JSON.stringify(checkJson, null, 4);
+    console.log(outJson);
 
 
 
