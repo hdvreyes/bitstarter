@@ -54,20 +54,40 @@ var loadHtml = function(htmlUrl){
   });  
 }
 
+// var checkURL = function(url, checksfile) {
+
+//   restler.get(url).on('complete', function(data, response) {
+
+//     $ = cheerio.load(data);
+
+//     var checks = loadChecks(checksfile).sort();
+//     var out = {};
+//     for(var ii in checks) {
+//       var present = $(checks[ii]).length > 0;
+//       out[checks[ii]] = present;
+//     }
+
+//     var outJson = JSON.stringify(out, null, 4);
+//     console.log(outJson);
+
+//   }); 
+// };
+
 
 var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
-    $ = cheerioHtmlFile(htmlfile);
-    //var checks = loadChecks(checksfile).sort();
-    //rest.get(apiurl).on('complete', response2console);
-    var checks = loadHtml(urlpath);
+    console.log(htmlfile + '-' + checksfile + '-' + urlpath);
+    // $ = cheerioHtmlFile(htmlfile);
+    // //var checks = loadChecks(checksfile).sort();
+    // //rest.get(apiurl).on('complete', response2console);
+    // var checks = loadHtml(urlpath);
 
 
-    var out = {};
-    for(var ii in checks) {
-        var present = $(checks[ii]).length > 0;
-        out[checks[ii]] = present;
-    }
-    return out;
+    // var out = {};
+    // for(var ii in checks) {
+    //     var present = $(checks[ii]).length > 0;
+    //     out[checks[ii]] = present;
+    // }
+    // return out;
 };
 
 var clone = function(fn) {
