@@ -22,6 +22,7 @@ References:
 */
 
 var fs                  = require('fs');
+var http                = require('http');
 var program             = require('commander');
 var cheerio             = require('cheerio');
 var restler             = require('restler');
@@ -83,25 +84,20 @@ var loadHtml = function(htmlUrl){
 
 var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
     // console.log(htmlfile + '-file:' + checksfile + '-url:' + urlpath);
-    // var checks = "";
-    var hey = "";
-    // if(htmlfile == false)
-    // {
-        console.log('here');
+    
+    if(htmlfile == false)
+    {
+        // console.log('here');
         restler.get(urlpath).on('complete', function(data, response) {
-            //$ = cheerio.load(data);
-            hey = data;
+            $ = cheerioHtmlFile(data);
+            var checks = loadChecks(checksfile).sort();
         }); 
-        $ = cheerioHtmlFile(hey);
+    }else
+    {
+        // console.log('here2');
+        $ = cheerioHtmlFile(htmlfile);
         var checks = loadChecks(checksfile).sort();
-
-    // }else
-    // {
-    //     console.log('here2');
-
-    //     $ = cheerioHtmlFile(htmlfile);
-    //     var checks = loadChecks(checksfile).sort();
-    // }
+    }
     
     var out = {};
     for(var ii in checks) {
@@ -111,7 +107,6 @@ var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
     return out;
     // var outJson = JSON.stringify(out, null, 4);
     // console.log(outJson);
-
 };
 
 var clone = function(fn) {
