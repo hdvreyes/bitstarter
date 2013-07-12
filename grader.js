@@ -83,13 +83,13 @@ var loadHtml = function(htmlUrl){
 
 var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
     // console.log(htmlfile + '-file:' + checksfile + '-url:' + urlpath);
-    
+    var checks = "";
     // if(htmlfile == false)
     // {
         console.log('here');
         restler.get(urlpath).on('complete', function(data, response) {
-            $ = cheerioHtmlFile(data);
-            var checks = loadChecks(checksfile).sort();
+            $ = cheerio.load(data);
+            checks = loadChecks(checksfile).sort();
         }); 
     // }else
     // {
