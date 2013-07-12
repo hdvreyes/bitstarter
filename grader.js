@@ -84,12 +84,13 @@ var loadHtml = function(htmlUrl){
 var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
     // console.log(htmlfile + '-file:' + checksfile + '-url:' + urlpath);
     // var checks = "";
+    var hey = "";
     // if(htmlfile == false)
     // {
         console.log('here');
         restler.get(urlpath).on('complete', function(data, response) {
             //$ = cheerio.load(data);
-            var hey = data;
+            hey = data;
         }); 
         $ = cheerioHtmlFile(hey);
         var checks = loadChecks(checksfile).sort();
