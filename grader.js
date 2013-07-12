@@ -84,36 +84,27 @@ var loadHtml = function(htmlUrl){
 var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
     // console.log(htmlfile + '-file:' + checksfile + '-url:' + urlpath);
     
-    if(htmlfile == false)
-    {
+    // if(htmlfile == false)
+    // {
         console.log('here');
         restler.get(urlpath).on('complete', function(data, response) {
             $ = cheerioHtmlFile(data);
             var checks = loadChecks(checksfile).sort();
-            var out = {};
-            for(var ii in checks) {
-                var present = $(checks[ii]).length > 0;
-                out[checks[ii]] = present;
-            }
-            // var outJson = JSON.stringify(out, null, 4);
-            // console.log(outJson);
-             return out;
         }); 
-    }else
-    {
-        console.log('here2');
+    // }else
+    // {
+    //     console.log('here2');
 
-        $ = cheerioHtmlFile(htmlfile);
-        var checks = loadChecks(checksfile).sort();
-        var out = {};
-        for(var ii in checks) {
-            var present = $(checks[ii]).length > 0;
-            out[checks[ii]] = present;
-        }
-        return out;
-
-    }
+    //     $ = cheerioHtmlFile(htmlfile);
+    //     var checks = loadChecks(checksfile).sort();
+    // }
     
+    var out = {};
+    for(var ii in checks) {
+        var present = $(checks[ii]).length > 0;
+        out[checks[ii]] = present;
+    }
+    return out;
     // var outJson = JSON.stringify(out, null, 4);
     // console.log(outJson);
 
