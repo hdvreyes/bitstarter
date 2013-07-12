@@ -82,7 +82,7 @@ var loadHtml = function(htmlUrl){
 
 
 var checkHtmlFile = function(htmlfile, checksfile, urlpath) {
-    console.log(htmlfile + '-' + checksfile + '-' + urlpath);
+    console.log(htmlfile + '-file:' + checksfile + '-url:' + urlpath);
     // $ = cheerioHtmlFile(htmlfile);
     // //var checks = loadChecks(checksfile).sort();
     // //rest.get(apiurl).on('complete', response2console);
